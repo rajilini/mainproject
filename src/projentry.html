@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Academic Evaluation Form </title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Include CSS File Here -->
+<link rel="stylesheet" href="css/style.css"/>
+<!-- Include JS File Here -->
+
+</head>
+<body>
+<div class="container">
+<div class="main">
+<form class="form" method="post" action="#">
+<h2>Project Evaluation Form </h2>
+
+<label>Class:</label>
+<select name="class">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select>
+
+<label>Division :</label>
+<select name="division">
+  <option value="1">A</option>
+  <option value="2">B</option>
+  <option value="3">C</option>
+  <option value="4">D</option>
+</select>
+<label>Subject :</label>
+<select name="subject">
+  <option value="1">English</option>
+  <option value="2">Malayalam</option>
+  <option value="3">Hindi</option>
+  <option value="4">Science</option>
+  <option value="5">Social Science</option>
+  <option value="6">Mathematics</option>
+</select>
+<label>Project :</label>
+<select name="projno">
+  <option value="1">1</option>
+  <option value="2">2</option> 
+</select>
+<br>
+<br>
+<label>User ID :</label>
+<input type="text" name="did" id="uid">
+<label> Mark  :</label>
+<input type="text" name="mark" id="mark">
+<input type="button" name="save" id="save" value="SAVE" onClick="return (valid ())">
+</form>
+</div>
+
+<script laguage="text/javascript">
+	
+	function valid(){
+		if (uid=="" )
+			alert("Please Fill Student Id");
+		if (!(mark.value>=0 && mark<=10))
+			alert("Enter mark in range 0-10");
+	};
+</script>
+</body>
+</html>

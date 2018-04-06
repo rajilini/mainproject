@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Non-Academic Evaluation Form </title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Include CSS File Here -->
+<link rel="stylesheet" href="css/style.css"/>
+<!-- Include JS File Here -->
+
+</head>
+<body>
+<div class="container">
+<div class="main">
+<form class="form" method="post" action="#">
+<h2>Behaviour Evaluation Form </h2>
+
+<label>Class:</label>
+<select name="class">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select>
+
+<label>Division :</label>
+<select name="division">
+  <option value="1">A</option>
+  <option value="2">B</option>
+  <option value="3">C</option>
+  <option value="4">D</option>
+</select>
+
+<br>
+<br>
+<label>Student ID :</label>
+<input type="text" name="did" id="uid"><br>
+<label> Obedience  :</label>
+<select name="obed">
+  <option value="1">A+</option>
+  <option value="2">A</option>
+  <option value="3">B+</option>
+  <option value="4">B</option>
+</select><br>
+<label> Politeness  :</label>
+<select name="poli">
+  <option value="1">A+</option>
+  <option value="2">A</option>
+  <option value="3">B+</option>
+  <option value="4">B</option>
+</select><br>
+<label> Attitude towards study :</label>
+<select name="astudy">
+  <option value="1">A+</option>
+  <option value="2">A</option>
+  <option value="3">B+</option>
+  <option value="4">B</option>
+</select><br>
+<label> Attitude towards friends :</label>
+<select name="afriend">
+  <option value="1">A+</option>
+  <option value="2">A</option>
+  <option value="3">B+</option>
+  <option value="4">B</option>
+</select><br>
+<label> Attitude towards teachers :</label>
+<select name="ateacher">
+  <option value="1">A+</option>
+  <option value="2">A</option>
+  <option value="3">B+</option>
+  <option value="4">B</option>
+</select><br>
+<input type="button" name="save" id="save" value="SAVE" onClick="return (valid ())">
+</form>
+</div>
+
+<script laguage="text/javascript">
+	
+	function valid(){
+		if (uid=="" )
+			alert("Please Fill Student Id");
+		
+	};
+</script>
+</body>
+</html>

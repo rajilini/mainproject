@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Award Entry Form </title>
+<meta name="robots" content="noindex, nofollow">
+<!-- Include CSS File Here -->
+<link rel="stylesheet" href="css/style.css"/>
+<!-- Include JS File Here -->
+
+</head>
+<body>
+<div class="container">
+<div class="main">
+<form class="form" method="post" action="#">
+<h2>Award Entry Form </h2>
+
+<label>Class:</label>
+<select name="class">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select>
+
+<label>Division :</label>
+<select name="division">
+  <option value="1">A</option>
+  <option value="2">B</option>
+  <option value="3">C</option>
+  <option value="4">D</option>
+</select>
+<label>Student ID :</label>
+<input type="text" name="did" id="uid"><br>
+<label>Award Type :</label>
+<select name="atype">
+  <option value="1">International</option>
+  <option value="2">National</option>
+  <option value="3">State</option>
+  <option value="4">District</option>
+  <option value="5">Inter-School</option>
+  <option value="6">School</option>
+</select>
+<label>Award Title  :</label>
+<input type="text" name="dname" id="title">
+<label>Position :</label>
+<select name="pos">
+  <option value="1">First</option>
+  <option value="2">Second</option> 
+<option value="3">Third</option> 
+<option value="4">Consolation</option>
+<option value="5">Participation</option>
+</select>
+</select>
+<br>
+<input type="button" name="save" id="save" value="SAVE" onClick="return (valid ())">
+</form>
+</div>
+
+<script laguage="text/javascript">
+	
+	function valid(){
+		if (uid=="" )
+			alert("Please Fill Student Id");
+		if (!(mark.value>=0 && mark<=10))
+			alert("Enter mark in range 0-10");
+	};
+</script>
+</body>
+</html>

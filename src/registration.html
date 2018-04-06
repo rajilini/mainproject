@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+<div class="main">
+
+<h2>Registration Details </h2>
+<h2 id="instructor"></h2>
+<label>User ID :</label>
+<input   id="uid" type="text">
+<label>Name :</label>
+<input id="sname" name="sname" type="text"  >
+<label >Gender :</label>
+<input   id="gender" type="text">
+<label >Date of Birth :</label>
+<input  id="dob" type="text">
+<label >Address :</label>
+<input  id="addr" type="text">
+<label >Father Name :</label>
+<input  id="fname" type="text">
+<label >Phone Number :</label>
+<input  id="phone" type="text">
+<label >Class :</label>
+<input  id="class" type="text">
+<label >Division :</label>
+<input  id="division" type="text">
+
+<button>SAVE</button>
+
+
+</div>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+   
+<script>
+
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+        }
+
+    web3.eth.defaultAccount = web3.eth.accounts[0];
+var myContract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "promoteStudent",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "checkStudent",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "getstudentClass",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint64"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			},
+			{
+				"name": "caddr",
+				"type": "bytes32"
+			}
+		],
+		"name": "changeAddress",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "getstudentAddr",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "transferStudent",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "stucount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "getstudentName",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "getstudentGender",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint64"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "getstudentDivision",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint64"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "studentAccts",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "getstudentDob",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "getstudentFname",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			}
+		],
+		"name": "getstudentPhoneno",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint64"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "students",
+		"outputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			},
+			{
+				"name": "name",
+				"type": "bytes32"
+			},
+			{
+				"name": "gender",
+				"type": "uint64"
+			},
+			{
+				"name": "dob",
+				"type": "bytes32"
+			},
+			{
+				"name": "addr",
+				"type": "bytes32"
+			},
+			{
+				"name": "fname",
+				"type": "bytes32"
+			},
+			{
+				"name": "phoneno",
+				"type": "uint64"
+			},
+			{
+				"name": "class",
+				"type": "uint64"
+			},
+			{
+				"name": "division",
+				"type": "uint64"
+			},
+			{
+				"name": "transferred",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			},
+			{
+				"name": "name",
+				"type": "bytes32"
+			},
+			{
+				"name": "gender",
+				"type": "uint64"
+			},
+			{
+				"name": "dob",
+				"type": "bytes32"
+			},
+			{
+				"name": "addr",
+				"type": "bytes32"
+			},
+			{
+				"name": "fname",
+				"type": "bytes32"
+			},
+			{
+				"name": "phone",
+				"type": "uint64"
+			},
+			{
+				"name": "class",
+				"type": "uint64"
+			},
+			{
+				"name": "division",
+				"type": "uint64"
+			}
+		],
+		"name": "setStudent",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "sid",
+				"type": "bytes32"
+			},
+			{
+				"name": "cphone",
+				"type": "uint64"
+			}
+		],
+		"name": "changePhone",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}
+]);
+var student = myContract.at('0xb36e1c9102952e3e86afee78a974d4a16d86c3b6');
+        console.log(student);
+student.getstudentName("1",function(error, result){
+
+            if(!error)
+                {$("#instructor").html("Welcome...Please fill the details");
+$("#instructor").html(web3.toAscii(result[0]));
+                    console.log(result);
+                }
+            else
+                console.error(error);
+        });
+ $("#button").click(function() {
+            //$("#loader").show();
+           student.setStudent("1", $("#uid").val(), $("#sname").val(), $("#gender").val(), $("#dob").val(),$("#addr").val(),$("#fname").val(),$("#phone").val(),$("#class").val(),$("#division").val(),(err, res)=> {
+               if (err) {
+                  // $("#loader").hide();
+               }
+           });
+       });
+
+
+    </script>
+</body>
+</html>
